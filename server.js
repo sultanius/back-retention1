@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-// const http = require("http");
-// const server = http.createServer(app);
+const http = require("http");
+const server = http.createServer(app);
+const dotenv = require('dotenv').config();
 
 const cors = require("cors");
 
@@ -26,7 +27,7 @@ const pass = '12345678910111213'
 // });
 
 
-const connection = mysql.createConnection({host: "95.163.180.235", user: "user", password: pass, database: "MySQL-test", port: 3306});
+const connection = mysql.createConnection({host: "95.163.180.235", user: "user", password: process.env.DATABASE_PASS, database: "MySQL-test", port: 3306});
 
 // const connection = mysql.createConnection({
 //   host: "localhost",
@@ -117,6 +118,6 @@ app.get('/', (req, res) => {
 //   });
 // });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`work at port - ${PORT}`);
 });
