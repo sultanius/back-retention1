@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const http = require("http");
-const server = http.createServer(app);
+// const http = require("http");
+// const server = http.createServer(app);
 
 const cors = require("cors");
 
@@ -117,6 +117,6 @@ app.get('/', (req, res) => {
 //   });
 // });
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`work at port - ${PORT}`);
 });
