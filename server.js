@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // app.use(cors());
 
-const PORT = 4200;
+const PORT = 3000;
 
 const mysql = require("mysql");
 const pass = '12345678910111213'
