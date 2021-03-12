@@ -3,17 +3,16 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const dotenv = require('dotenv').config();
+const mysql = require("mysql");
+
 
 const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
-const PORT = 3000;
 
-const mysql = require("mysql");
-const pass = '12345678910111213'
 
 // const connection = mysql.createConnection({
 //   host: "35.195.17.158",
