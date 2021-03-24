@@ -12,28 +12,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-
-
-// const connection = mysql.createConnection({
-//   host: "35.195.17.158",
-//   socketPath: '/cloudsql/test-project-307413:europe-west1:test-test-test',
-//   // host: '35.228.187.188',
-//   // socketPath:`/cloudsql/mercurial-ruler-307320:europe-west3:real-test-real`,
-//   user: "user",
-//   database: "mysql",
-//   password: "123456",
-//   port:'3306'
-// });
-
-
-const connection = mysql.createConnection({host: "95.163.180.235", user: "user", password: process.env.DATABASE_PASS, database: "MySQL-test", port: 3306});
-
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   database: "rolling_retention",
-//   password: "password",
-// });
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "rolling_retention",
+  password: "password",
+});
 
 connection.connect(function (err) {
   if (err) {
@@ -79,7 +63,6 @@ app.get('/api/retention', (req, res) => {
     let activeUser = 0;
 
     result.forEach(el => {
-      let yearMonthDay = el.dateLastActivity.split('.').reverse();
       let realDateReg = new Date( el.dateRegistration.split('.').reverse() );
       let realDateLastActive = new Date( el.dateLastActivity.split('.').reverse() );
 
